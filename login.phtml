@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Magasinier</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+    <link rel="canonical" href="https://getbootstrap.com/docs/5.2/examples/album/">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.2/font/bootstrap-icons.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+    <meta name="theme-color" content="#712cf9">
+</head>
+<style>
+    #nav{
+        background-color: #87bba2;
+    }
+    #form1 {
+        margin-top:30px;
+        -webkit-box-shadow: -3px 6px 15px -2px #000000; 
+        box-shadow: -3px 6px 15px -2px #000000;
+        padding:10%
+    }
+    
+    #img {
+        height:100%;
+        width:70%;
+    }
+</style>
+<body>
+<nav class="navbar navbar-expand-lg bg-body-tertiary" id="nav">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">SOTULUB Bizerte</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarText">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="#"><i class="bi bi-house"></i> Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#"><i class="bi bi-align-bottom"></i> Presentation de la societe </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#"><i class="bi bi-check-circle-fill"></i> Taches effectue</a>
+        </li>
+      </ul>
+      <span class="navbar-text">
+        Bienvenue dans l'espace admin
+      </span>
+    </div>
+  </div>
+</nav>
+
+<div class="container text-center" id="form1">
+  <div class="row">
+    <div class="col">
+    <form action="login.php" method="POST">
+
+    <?php if(array_key_exists('msg',$_GET)):?> 
+      <div class="alert alert-danger">
+         <?=$_GET['msg']?>
+      </div>
+  <?php endif; ?>
+
+  <div class="mb-3">
+    <label for="exampleInputEmail1" class="form-label" >Email address</label>
+    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" id="mail" name="mail">
+  </div>
+  <div class="mb-3">
+    <label for="exampleInputPassword1" class="form-label">Password</label>
+    <input type="password" class="form-control" id="exampleInputPassword1" id="pwd" name="password">
+  </div>
+  <button type="submit" class="btn btn-success" name="login" onclick="verif()"><i class="bi bi-door-open"></i> Login</button>
+  <button type="reset" class="btn btn-danger"><i class="bi bi-x-circle-fill"></i> reset</button>
+</form>
+    </div>
+    <div class="col">
+      <img src="media/Admin2.PNG" alt="Bienvenue admin" id="img">
+    </div>
+  </div>
+</div>
+
+</body>
+<script>
+    function champNonVide(champ) {
+    if(champ.value.trim() === "")//trim pour supprimer l'espace blanc avant et a afin du champ
+     {
+      return false; // le champ est vide
+    } else {
+      return true; // le champ n'est pas vide
+    }
+  }
+  function verif(){
+    document.querySelector("form") 
+    var mail = document.getElementById("#mail");
+    console.log(mail);
+    var pwd = document.getElementById("#pwd");
+    consoles.log(pwd)
+    if (!champNonVide(mail) || !champNonVide(mail)) 
+    {
+      event.preventDefault(); // empêche la soumission du formulaire
+      alert("Le champ ne peut pas être vide !");
+    }
+  };
+  
+
+ 
+    //alert("script");
+</script>
+</html>

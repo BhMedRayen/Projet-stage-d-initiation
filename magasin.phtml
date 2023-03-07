@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login Magasinier</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+  <link rel="canonical" href="https://getbootstrap.com/docs/5.2/examples/album/">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.2/font/bootstrap-icons.css">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+  <meta name="theme-color" content="#712cf9">
+</head>
+<style>
+  #nav {
+    background-color: #87bba2;
+  }
+
+  #form1 {
+    margin-top: 30px;
+    -webkit-box-shadow: -3px 6px 15px -2px #000000;
+    box-shadow: -3px 6px 15px -2px #000000;
+    padding: 10%
+  }
+
+  #img {
+    height: 100%;
+    width: 70%;
+  }
+
+  a {
+    text-decoration: none;
+  }
+
+  #add {
+    margin-top: 30px;
+    margin-left: 40%
+  }
+
+  #alert {
+    text-align: center;
+  }
+</style>
+
+<body>
+  <nav class="navbar navbar-expand-lg bg-body-tertiary" id="nav">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">SOTULUB Bizerte</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarText">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="#"><i class="bi bi-house"></i> Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#"><i class="bi bi-align-bottom"></i> Presentation de la societe </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#"><i class="bi bi-check-circle-fill"></i> Taches effectue</a>
+          </li>
+        </ul>
+        <span class="navbar-text">
+          <a href="deconnexion.php"><i class="bi bi-door-closed"></i> Deconnexion</a>
+        </span>
+      </div>
+    </div>
+  </nav>
+
+  <div class="container">
+    <div id="add">
+      <a href="ajouter.php"><button type="button" class="btn btn-outline-success"><i class="bi bi-file-earmark-plus-fill"></i> ajouter produit </button></a>
+    </div>
+    <br>
+    <div id="alert">
+      <?php if (array_key_exists('msg', $_GET)) : ?>
+        <div class="alert alert-success">
+          <?= $_GET['msg'] ?>
+        </div>
+      <?php endif; ?>
+    </div>
+    <table class="blueTable">
+      <thead>
+        <tr>
+          <th>code article</th>
+          <th>emplacement</th>
+          <th>designation</th>
+          <th>code magasin</th>
+          <th>prix d'achat</th>
+          <th>date d'achat</th>
+          <th>quantité disponible</th>
+          <th>modification</th>
+        </tr>
+      </thead>
+      <tbody>
+        <?php foreach ($produits as $produit) : ?>
+          <tr>
+            <td><?= $produit['code_article'] ?></td>
+            <td><?= $produit['Emplacement'] ?></td>
+            <td><?= $produit['designation'] ?></td>
+            <td><?= $produit['code_mag'] ?></td>
+            <td><?= $produit['prix'] ?></td>
+            <td><?= $produit['date_entree'] ?></td>
+            <td><?= $produit['quantité'] ?></td>
+            <td id="btn2">
+              <a href="update.php?id=<?= $produit['id_produit'] ?>"><button type="submit" class="btn btn-outline-primary mr-5"><i class="bi bi-arrow-repeat"></i></button></a>
+              <a href="magasin.php?id_delete=<?= $produit['id_produit'] ?>"><button type="button" class="btn btn-outline-danger ml-5"><i class="bi bi-trash"></i></button></a>
+              <a href="magasin.php?id_pdf=<?= $produit['id_produit'] ?>"><button class="btn btn-outline-info">Pdf</button></a>
+            </td>
+          </tr>
+        <?php endforeach; ?>
+      </tbody>
+      </tr>
+    </table>
+  </div>
+</body>
+
+
+
+
+<style>
+  table.blueTable {
+    border: 1px solid #1C6EA4;
+    background-color: #EEEEEE;
+    width: 100%;
+    text-align: left;
+    border-collapse: collapse;
+  }
+
+  table.blueTable td,
+  table.blueTable th {
+    border: 1px solid #AAAAAA;
+    padding: 3px 2px;
+  }
+
+  table.blueTable tbody td {
+    font-size: 15px;
+  }
+
+  table.blueTable tr:nth-child(even) {
+    background: #D0E4F5;
+  }
+
+  table.blueTable thead {
+    background: #45D634;
+    background: -moz-linear-gradient(top, #73e067 0%, #57da48 66%, #45D634 100%);
+    background: -webkit-linear-gradient(top, #73e067 0%, #57da48 66%, #45D634 100%);
+    background: linear-gradient(to bottom, #73e067 0%, #57da48 66%, #45D634 100%);
+    border-bottom: 2px solid #0A441B;
+  }
+
+  table.blueTable thead th {
+    font-size: 15px;
+    font-weight: bold;
+    color: #FFFFFF;
+    border-left: 2px solid #D0E4F5;
+  }
+
+  table.blueTable thead th:first-child {
+    border-left: none;
+  }
+
+  table.blueTable tfoot {
+    font-size: 14px;
+    font-weight: bold;
+    color: #FFFFFF;
+    background: #D0E4F5;
+    background: -moz-linear-gradient(top, #dcebf7 0%, #d4e6f6 66%, #D0E4F5 100%);
+    background: -webkit-linear-gradient(top, #dcebf7 0%, #d4e6f6 66%, #D0E4F5 100%);
+    background: linear-gradient(to bottom, #dcebf7 0%, #d4e6f6 66%, #D0E4F5 100%);
+    border-top: 0px solid #444444;
+  }
+
+  table.blueTable tfoot td {
+    font-size: 14px;
+  }
+
+  table.blueTable tfoot .links {
+    text-align: right;
+  }
+
+  table.blueTable tfoot .links a {
+    display: inline-block;
+    background: #1C6EA4;
+    color: #FFFFFF;
+    padding: 2px 8px;
+    border-radius: 5px;
+  }
+
+  #btn2 {
+    margin-left: 2px;
+  }
+</style>
