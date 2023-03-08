@@ -12,6 +12,7 @@
     <meta name="theme-color" content="#712cf9">
 </head>
 <body>
+
 <nav class="navbar navbar-expand-lg bg-body-tertiary" id="nav">
   <div class="container-fluid">
     <a class="navbar-brand" href="#">SOTULUB Bizerte</a>
@@ -21,68 +22,62 @@
     <div class="collapse navbar-collapse" id="navbarText">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="index.html"><i class="bi bi-house"></i> Home</a>
+          <a class="nav-link active" aria-current="page" href="#"><i class="bi bi-house"></i> Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#"><i class="bi bi-align-bottom"></i> Presentation de la societe </a>
+          <a class="nav-link" href="presentation.html"><i class="bi bi-align-bottom"></i> Presentation de la societe </a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="#"><i class="bi bi-check-circle-fill"></i> Taches effectue</a>
         </li>
       </ul>
       <span class="navbar-text">
-      <i class="bi bi-gear-wide-connected"> Espace admin</i>
+       <a href="login.php"><i class="bi bi-gear-wide-connected"> Espace admin </a></i>
       </span>
     </div>
   </div>
 </nav>
 
-<div class="container text-center" id="form1">
-  <div class="row">
-    <div class="col">
-    <form action="login.php" method="POST">
-
-    <?php if(array_key_exists('msg',$_GET)):?> 
-      <div class="alert alert-danger">
-         <?=$_GET['msg']?>
+<body>
+    <div id="imagePrincipale">
+        <h1>Institut Supérieur des Etudes Technologique Bizerte</h1>
+        <div id="premierTrait"></div>
+        <h3>Présentation de stage d'initiation <br>
+        Ben Hassine Mohamed Rayen</h3>
       </div>
-  <?php endif; ?>
-
-  <div class="mb-3">
-    <label for="exampleInputEmail1" class="form-label" >Email address</label>
-    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" id="mail" name="mail">
-  </div>
-  <div class="mb-3">
-    <label for="exampleInputPassword1" class="form-label">Password</label>
-    <input type="password" class="form-control" id="exampleInputPassword1" id="pwd" name="password">
-  </div>
-  <button type="submit" class="btn btn-success" name="login" onclick="verif()"><i class="bi bi-door-open"></i> Login</button>
-  <button type="reset" class="btn btn-danger"><i class="bi bi-x-circle-fill"></i> reset</button>
-</form>
-    </div>
-    <div class="col">
-      <img src="media/Admin2.PNG" alt="Bienvenue admin" id="img">
-    </div>
-  </div>
-</div>
-
+</div>    
+   
 </body>
 <style>
-   @import url('https://fonts.googleapis.com/css?family=Advent+Pro|Dancing+Script&display=swap');
-    #nav{
+@import url('https://fonts.googleapis.com/css?family=Advent+Pro|Dancing+Script&display=swap');
+#nav{
         background-color: #87bba2;
+        overflow: hidden;
+  position: fixed;
+  width: 100%;
+  opacity: 0.9;
     }
-    #form1 {
-        margin-top:30px;
-        -webkit-box-shadow: -3px 6px 15px -2px #000000; 
-        box-shadow: -3px 6px 15px -2px #000000;
-        padding:10%
+    a {
+        text-decoration: none;
     }
-    
-    #img {
-        height:100%;
-        width:70%;
-    }
+ #imagePrincipale {
+  padding-top: 60px;
+  background: url(media/background2.jpg) no-repeat fixed 50% 50%;
+  background-size: cover;
+  height: 799px;
+}
+h1 {
+  font-family: 'Dancing Script', cursive;
+  text-align: center;
+  color:#fafbfa;
+    font-size: 6em;
+  margin-top: 100px;
+  text-shadow: 1px 3px 2px black;
+}
+h3 {
+  text-align: center;
+  color:#fafbfa;
+  font-size: 3em;
+  text-shadow: 1px 3px 2px black;
+}
 </style>
-</script>
-</html>
