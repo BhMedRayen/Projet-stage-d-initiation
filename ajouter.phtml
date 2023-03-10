@@ -22,13 +22,13 @@
     <div class="collapse navbar-collapse" id="navbarText">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#"><i class="bi bi-house"></i> Home</a>
+          <a class="nav-link active" aria-current="page" href="index.html"><i class="bi bi-house"></i> Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#"><i class="bi bi-align-bottom"></i> Presentation de la societe </a>
+          <a class="nav-link" href="presentation.html"><i class="bi bi-align-bottom"></i> Presentation de la societe </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="tache.html"><i class="bi bi-check-circle-fill"></i> Taches effectue</a>
+          <a class="nav-link" href="Tache.html"><i class="bi bi-check-circle-fill"></i> Taches effectue</a>
         </li>
       </ul>
       <span class="navbar-text">
@@ -48,9 +48,10 @@
 
     <?php if(array_key_exists('msg',$_GET)):?> 
       <div class="alert alert-success" role="alert">
-      <?=$_GET['msg']?>
+      <?=$_GET['msg']?> 
+     <a href="magasin.php" class="btn btn-success" id="back">Retour</button></a>
 </div>
-  <?php endif; ?>
+  <?php endif;?>
 
   <div class="mb-3">
     <label for="codearticle" class="form-label" >Code Article</label>
@@ -123,5 +124,9 @@
     #add{
         margin-top:30px;
         margin-left:40%
+    }
+    #back {
+      margin-left:2rem;
+      font-size:70%;
     }
 </style>
