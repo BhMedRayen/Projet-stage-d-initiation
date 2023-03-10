@@ -12,11 +12,14 @@ if (!isset($_SESSION['id'])) {
 $requete = $pdo->prepare('SELECT * FROM produit_magasin');
 $requete->execute();
 $produits = $requete->fetchAll();
-
+    
 if (array_key_exists('id_delete', $_GET)) {
     $id = $_GET['id_delete'];
     $requete3 = $pdo->prepare('DELETE from produit_magasin where id_produit=:id');
     $requete3->execute(['id' => $id]);
+    $requete = $pdo->prepare('SELECT * FROM produit_magasin');
+    $requete->execute();
+    $produits = $requete->fetchAll();
 }
 
 if (isset($_GET['id_pdf'])) {

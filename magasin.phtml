@@ -47,7 +47,7 @@
     <br>
     <div id="alert">
       <?php if (array_key_exists('msg', $_GET)) : ?>
-        <div class="alert alert-success">
+        <div class="alert alert-danger">
           <?= $_GET['msg'] ?>
         </div>
       <?php endif; ?>
@@ -65,6 +65,13 @@
           <th>modification</th>
         </tr>
       </thead>
+      <?php  if(count($produits)==0): ?>
+      <tbody>
+          <tr>
+             <td colspan="8" class="text-danger text-center">Pas de donneés</td>
+          </tr>
+      </tbody>
+      <?php  else: ?>
       <tbody>
         <?php foreach ($produits as $produit) : ?>
           <tr>
@@ -76,13 +83,37 @@
             <td><?= $produit['date_entree'] ?></td>
             <td><?= $produit['quantité'] ?></td>
             <td id="btn2">
+
+
               <a href="update.php?id=<?= $produit['id_produit'] ?>"><button type="submit" class="btn btn-outline-primary mr-5"><i class="bi bi-arrow-repeat"></i></button></a>
-              <a href="magasin.php?id_delete=<?= $produit['id_produit'] ?>"><button type="button" class="btn btn-outline-danger ml-5"><i class="bi bi-trash"></i></button></a>
+               <button type="button" data-bs-toggle="modal" data-bs-target="#exampleModal<?=$produit['id_produit']?>" class="btn btn-outline-danger ml-5"><i class="bi bi-trash"></i></button>
               <a href="magasin.php?id_pdf=<?= $produit['id_produit'] ?>"><button class="btn btn-outline-info">Pdf</button></a>
+              
+
+<div class="modal fade" id="exampleModal<?=$produit['id_produit']?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">  
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Confirmer la suppression</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+           supprime <?=$produit['designation']?>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-danger">
+            <a class="text-white" href="magasin.php?id_delete=<?=$produit['id_produit']?>">Delete</a>  
+          </button>
+      </div>
+    </div>
+  </div>
+</div>
             </td>
           </tr>
         <?php endforeach; ?>
       </tbody>
+      <?php  endif; ?>
       </tr>
     </table>
   </div>
