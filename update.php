@@ -28,8 +28,8 @@
             ]);
             header("location:magasin.php?msg=edit succes");
             exit();
-    }
-
+    
+ }
     include 'update.phtml';
 
 ?>
